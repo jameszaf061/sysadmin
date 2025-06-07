@@ -1,0 +1,27 @@
+version: '2.2'
+
+services:
+  nodeapp:
+    build:
+      context: ./nodeapp
+    image: jameszaf04/sys-admin-jzaf:nodeapp
+    container_name: nodeapp
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./nodeapp:/app
+    working_dir: /app
+    command: ["npm", "start"]
+
+  grafana:
+    image: jameszaf04/sys-admin-jzaf:grafana
+    container_name: grafana
+    ports:
+      - "3001:3000" 
+    volumes:
+      - grafana_data:/var/lib/grafana
+    restart: unless-stopped
+
+
+volumes:
+  grafana_data:
