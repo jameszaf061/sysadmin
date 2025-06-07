@@ -1,0 +1,5 @@
+users: 
+  admin:
+    displayname: 'Administrator'
+    password: '$argon2id$v=19$m=65536,t=3,p=4$xe8M+4dF2UpFqvmMIg5+0g$EdXjU+6rdfLpDUox7j+4QMysc1/354zdDd55C+mVB9A'
+    

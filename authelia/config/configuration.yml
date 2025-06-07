@@ -1,0 +1,32 @@
+server:
+  address: tcp://0.0.0.0:9091
+  tls:
+    certificate: /config/public.crt
+    key: /config/private.pem
+authentication_backend:
+  file:
+    path: /config/users.yml
+    password:
+      algorithm: argon2
+      argon2:
+        variant: argon2id
+        iterations: 1
+        memory: 2097152
+        parallelism: 4
+        key_length: 32
+        salt_length: 16
+access_control:
+  default_policy: deny
+  rules:
+    - domain: secure.example.com
+      policy: one_factor
+session:
+  cookies: 
+    - domain: 'secure.example.com'
+      authelia_url: 'https://secure.example.com'
+storage:
+  local:
+    path: /config/db.sqlite3
+notifier:
+  filesystem:
+    filename: /config/notification.txt
